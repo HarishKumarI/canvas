@@ -9,7 +9,7 @@ let mouse = {
     x: undefined,
     y: undefined
 }
-let mouseRadius = 38;
+let mouseRadius = 100;
 
 window.addEventListener('mousemove', (event) => {
     mouse.x = event.x;
@@ -25,7 +25,7 @@ window.addEventListener('resize', () => {
 
 
 
-let colors = ["#2C3E50", "#E74C3C", "#ECF0F1","#3498DB","##2980B9"];
+let colors = ["#2C3E50", "#E74C3C", "#ECF0F1", "#3498DB", "##2980B9"];
 
 class Circle {
     constructor(x, y, dx, dy, radius) {
@@ -63,8 +63,14 @@ class Circle {
         if (distance < this.radius + mouseRadius) {
             this.dx = -this.dx;
             this.dy = -this.dy;
-            this.x = (this.x < mouse.x) ? this.x - this.radius : this.x + this.radius;
-            this.y = (this.y < mouse.y) ? this.y - this.radius : this.y + this.radius
+            if (distance - this.radius <= mouseRadius) {
+                this.x = (this.x < mouse.x) ? this.x - this.radius/4 : this.x + this.radius/4;
+                this.y = (this.y < mouse.y) ? this.y - this.radius/4 : this.y + this.radius/4;
+            }
+            else {
+                this.x = (this.x < mouse.x) ? this.x - 1 : this.x + 1;
+                this.y = (this.y < mouse.y) ? this.y - 1 : this.y + 1;
+            }
         }
 
         this.x += this.dx;
@@ -89,6 +95,8 @@ function init() {
 }
 init();
 
+const mouseArcColor = [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)];
+
 function animate() {
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     requestAnimationFrame(animate);
@@ -96,8 +104,7 @@ function animate() {
     // mouse circle
     ctx.beginPath();
     ctx.arc(mouse.x, mouse.y, mouseRadius, 0, 2 * Math.PI);
-    // ctx.rect(mouse.x - mouseRadius, mouse.y - mouseRadius, mouseRadius * 2, mouseRadius * 2);
-    ctx.strokeStyle = "rgb(" + [Math.floor(Math.random() * 256), Math.floor(Math.random() * 256), Math.floor(Math.random() * 256)] + ")";
+    ctx.strokeStyle = "rgb(" + mouseArcColor + ")";
     ctx.lineWidth = 5;
     ctx.stroke();
     ctx.closePath();
