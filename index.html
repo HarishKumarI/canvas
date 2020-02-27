@@ -20,6 +20,17 @@
 <body>
     <canvas id="canvas"></canvas>
 
+    <script>
+
+        let canvas = document.querySelector('canvas');
+
+        let innerWidth = canvas.width = window.innerWidth;
+        let innerHeight = canvas.height = window.innerHeight - 6;
+
+        let ctx = canvas.getContext('2d');
+
+    </script>
+
     <!-- <script src="enlarge.js"></script> -->
     <script src="moveaway.js"></script>
     <!-- <script src="gravity.js"></script> -->

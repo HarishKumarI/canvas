@@ -1,9 +1,3 @@
-let canvas = document.querySelector('canvas');
-
-let innerWidth = canvas.width = window.innerWidth;
-let innerHeight = canvas.height = window.innerHeight - 6;
-
-let ctx = canvas.getContext('2d');
 
 let mouse = {
     x: undefined,
@@ -19,7 +13,6 @@ window.addEventListener('mousemove', (event) => {
 window.addEventListener('resize', () => {
     innerWidth = canvas.width = window.innerWidth;
     innerHeight = canvas.height = window.innerHeight - 6;
-
     init();
 })
 
@@ -64,8 +57,8 @@ class Circle {
             this.dx = -this.dx;
             this.dy = -this.dy;
             if (distance - this.radius <= mouseRadius) {
-                this.x = (this.x < mouse.x) ? this.x - this.radius/4 : this.x + this.radius/4;
-                this.y = (this.y < mouse.y) ? this.y - this.radius/4 : this.y + this.radius/4;
+                this.x = (this.x < mouse.x) ? this.x - this.radius / 4 : this.x + this.radius / 4;
+                this.y = (this.y < mouse.y) ? this.y - this.radius / 4 : this.y + this.radius / 4;
             }
             else {
                 this.x = (this.x < mouse.x) ? this.x - 1 : this.x + 1;
@@ -75,6 +68,11 @@ class Circle {
 
         this.x += this.dx;
         this.y += this.dy;
+
+        if (this.x < 0) this.x += 2 * mouse.x;
+        if (this.y < 0) this.y += 2 * mouse.y;
+        if (this.x > innerWidth) this.x -= 2 * mouse.x;
+        if (this.y > innerHeight) this.y -= 2 * mouse.y;
     }
 
 }

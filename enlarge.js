@@ -1,9 +1,3 @@
-let canvas = document.querySelector('canvas');
-
-let innerWidth = canvas.width = window.innerWidth ;
-let innerHeight = canvas.height = window.innerHeight - 6;
-
-let ctx = canvas.getContext('2d');
 
 let mouse = {
     x: undefined,
