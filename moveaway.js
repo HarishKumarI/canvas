@@ -9,7 +9,7 @@ let mouse = {
     x: undefined,
     y: undefined
 }
-let mouseRadius = 100;
+let mouseRadius = 50;
 
 window.addEventListener('mousemove', (event) => {
     mouse.x = event.x;
