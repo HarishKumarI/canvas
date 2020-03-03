@@ -20,7 +20,7 @@
     </style>
 
 
-    <script src="https://raw.githubusercontent.com/dataarts/dat.gui/master/build/dat.gui.js"></script>
+    <script  src="./dat.gui.js"></script>
 </head>
 
 <body>
@@ -37,8 +37,10 @@
 
     <canvas id="canvas"></canvas>
 
+    <script type="module">
+        import * as dat from 'dat.gui';
+    </script>
     <script>
-
         let canvas = document.querySelector('canvas');
 
         let innerWidth = canvas.width = window.innerWidth;
