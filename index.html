@@ -11,13 +11,30 @@
         } */
 
         html,
-        body {
+        body,
+        canvas {
+            height: 100%;
             margin: 0;
+            padding: 0;
         }
     </style>
+
+
+    <script src="https://raw.githubusercontent.com/dataarts/dat.gui/master/build/dat.gui.js"></script>
 </head>
 
 <body>
+    <!-- 
+    <div id="preview-box">
+        <strong>Preview another...</strong>
+        <select style="width:100%" id="themes">
+            <option value="enlarge.js">enlarge</option>
+            <option value="moveaway.js">moveaway</option>
+            <option value="gravity.js">gravity</option>
+            <option value="circular.js">circular</option>
+        </select>
+    </div> -->
+
     <canvas id="canvas"></canvas>
 
     <script>
@@ -25,15 +42,26 @@
         let canvas = document.querySelector('canvas');
 
         let innerWidth = canvas.width = window.innerWidth;
-        let innerHeight = canvas.height = window.innerHeight - 6;
+        let innerHeight = canvas.height = window.innerHeight;
 
         let ctx = canvas.getContext('2d');
 
     </script>
 
-    <!-- <script src="enlarge.js"></script> -->
-    <script src="moveaway.js"></script>
+    <!-- <script src="enlarge.js"></script>
+    <script src="moveaway.js"></script> -->
     <!-- <script src="gravity.js"></script> -->
+    <!-- <script src="circular.js"></script> -->
+    <script id="scriptstyle" src="sinewave.js"></script>
+
+    <!-- <script>
+        var scriptstyle = document.getElementById('scriptstyle');
+        var themes = document.getElementById('themes');
+
+        themes.onchange = function (e) {
+            scriptstyle.src = themes.value;
+        };
+    </script> -->
 </body>
 
 </html>

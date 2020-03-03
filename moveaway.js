@@ -1,4 +1,3 @@
-
 let mouse = {
     x: undefined,
     y: undefined
